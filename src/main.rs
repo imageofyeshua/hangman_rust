@@ -21,6 +21,8 @@ fn main() {
 
     let mut letters = create_letters(&selected_word);
 
+    println!("### Welcome to Hangman ###");
+
     loop {
         println!("You have {} turns left.", turns_left);
         display_progress(&letters);
@@ -32,7 +34,7 @@ fn main() {
         if user_char == '*' {
             break;
         }
-        
+
         let mut at_least_one_revealed = false;
         for letter in letters.iter_mut() {
             if letter.character == user_char {
@@ -54,13 +56,14 @@ fn main() {
             }
             GameProgress::Lost => {
                 println!("\nSorry, you lost!");
+                println!("Selected word was {}", selected_word);
                 break;
             }
         }
 
     }
 
-    println!("Selected word was {}", selected_word);
+    println!("Goodbye~~");
 }
 
 fn select_word() -> String {
